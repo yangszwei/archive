@@ -1,0 +1,17 @@
+Jason,268,89
+John,255,85
+Lannie,259,86
+Apple,196,65
+Steven,277,92
+Susan,279,93
+Tom,144,48
+James,224,74
+Peter,211,70
+Fiona,117,39
+Gina,180,60
+Joyce,134,44
+Judy,131,43
+Willy,73,24
+Upton,201,67
+Leo,123,41
+Kevin,264,88
