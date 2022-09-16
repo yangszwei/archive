@@ -5,3 +5,6 @@
 # Editor configuration file
 .idea/
 *.iml
+
+# Build output
+out/
