@@ -7,4 +7,5 @@
 *.iml
 
 # Build output
+cmake-build-debug/
 out/
