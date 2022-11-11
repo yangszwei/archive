@@ -1,0 +1,59 @@
+body {
+    height: 100vh;
+    width: 100vw;
+    color: #C5C6C7;
+    background-color: #1F2833;
+    margin: 0;
+    overflow: hidden;
+    font-family: 'Noto Sans TC', sans-serif;
+}
+
+#app-top {
+    height: 80px;
+    width: calc(100vw - 200px);
+    background: transparent;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+    padding: 0 100px;
+    -ms-align-items: center;
+    align-items: center;
+    justify-content: flex-start;
+    font-weight: bold;
+}
+
+#at-title {
+    font-size: 22px;
+    font-family: 'Lato', sans-serif;
+    color: #66FCF1;
+    letter-spacing: 1px;
+}
+
+#at-action {
+    margin-left: auto;
+    margin-right: 5px;
+}
+
+#at-action button {
+    font-size: 17px;
+    padding: 3px 6px;
+    margin-left: 20px;
+    cursor: pointer;
+    color: #FCFCFC;
+    background-color: transparent;
+    border: 0;
+    outline: 0;
+}
+
+#app-main {
+    width: calc(100vw - 240px);
+    background: transparent;
+    padding: 4px 20px;
+    padding-bottom: 30px;
+    margin: 0 100px;
+    height: calc(100vh - 170px);
+    position: relative;
+    overflow: hidden;
+}

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>訊二甲 30 楊斯惟</title>
+</head>
+<body>
+   
+    <table>
+        <tr> <th>名稱</th> <th>顏色</th> </tr>
+    </table>
+   
+    <script>
+        [ [ "紅", "red" ], [ "橙", "orange" ], [ "黃", "yellow" ], [ "綠", "green" ], [ "藍", "blue" ], [ "靛", "indigo" ], [ "紫", "purple" ] ]
+        .forEach(i => document.querySelector("tbody").innerHTML += `<tr><td>${i[0]}</td><td style="background-color: ${i[1]}"></td></tr>`);
+    </script>
+    
+</body>
+</html>

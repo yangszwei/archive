@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+<head>
+    <title>訊二甲 30 楊斯惟</title>
+    <meta charset="utf-8" />
+    <style>
+        table, table * {
+            border: black 1px solid;
+            border-collapse: collapse;
+            padding: 6px 9px;
+        }
+    </style>
+    <script>
+    const $ = q => document.querySelector(q);
+    $("html").innerHTML += "<table><tbody><tr></tr></tbody></table>";
+    ["座號", "姓名", "國文", "英文", "數學", "數位邏輯", "程式設計", "總分", "平均"]
+    .forEach(i => $("tr").innerHTML += `<th>${i}</th>`);
+    ["平澤憂", "平澤唯", "秋山澪", "田井中律", "琴吹紬", "中野梓", "山中佐和子", "真鍋和", "鈴木純", "赤松結衣"]
+    .forEach((i, j) => {
+        t = k => `<td>${k}</td>`, R = `<tr>${t(j+1)}${t(i)}`, s = [];
+        for (i=0;i<5;i++) { s.push(Math.round(Math.random() * 70) + 30); R += t(s[i]); }
+        a = 0; for (i of s) { a += i }; R += t(a) + t(parseInt(a/5)) + "</tr>";
+        $("tbody").innerHTML += R;
+    });
+    </script>
+</head>
+</html>

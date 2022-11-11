@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   
+    <meta charset="UTF-8" />
+    <title>訊二甲 30 楊斯惟 8-4</title>
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+TC" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
+    
+</head>
+<body>
+
+    <style>
+    
+        body {
+            height: 100vh;
+            width: 100vw;
+            display: -webkit-flex;
+            display: -moz-flex;
+            display: -ms-flex;
+            display: -o-flex;
+            display: flex;
+            overflow: hidden;
+            -ms-align-items: center;
+            align-items: center;
+            justify-content: center;
+            color: rgb(32, 33, 36);
+            background-color: rgb(220, 220, 250);
+            font-family: 'Noto Sans TC', sans-serif;
+        }
+
+        s-form {
+            display: -webkit-flex;
+            display: -moz-flex;
+            display: -ms-flex;
+            display: -o-flex;
+            display: flex;
+            -ms-align-items: flex-start;
+            align-items: flex-start;
+            position: relative;
+        }
+
+        sf-part {
+            display: inline-block;
+        }
+
+        input:not([type=checkbox]):not([type=radio]) {
+            width: 400px;
+            font-size: 28px;
+            outline: 0;
+            padding: 10px 20px;
+            border: 0;
+            background-color: white;
+            border-radius: 8px;
+            display: block;
+            margin: 16px;
+        }
+
+        radio-group {
+            width: 400px;
+            border: 0;
+            background-color: white;
+            display: block;
+            padding: 10px 20px;
+            border-radius: 8px;
+            margin: 16px;
+        }
+
+        radio-group > span {
+            font-size: 28px;
+            margin: 4px;
+            display: block;
+        }
+
+        label {
+            display: -webkit-flex;
+            display: -moz-flex;
+            display: -ms-flex;
+            display: -o-flex;
+            display: flex;
+            -ms-align-items: center;
+            font-size: 24px;
+            align-items: center;
+        }
+
+        radio-group input {
+            margin: 18px 8px;
+            margin-right: 20px;
+            display: inline-block;
+        }
+
+        multi-select {
+            width: 400px;
+            border: 0;
+            background-color: white;
+            display: block;
+            padding: 10px 20px;
+            border-radius: 8px;
+            margin: 16px;
+        }
+
+        multi-select > span {
+            font-size: 28px;
+            margin: 8px;
+            display: block;
+        }
+
+        multi-select label {
+            display: -webkit-inline-flex;
+            display: -moz-inline-flex;
+            display: -ms-inline-flex;
+            display: -o-inline-flex;
+            display: inline-flex;
+            -ms-align-items: center;
+            align-items: center;
+            margin: 6px 3px;
+            font-size: 24px;
+        }
+
+        multi-select input {
+            display: inline-block;
+            margin: 10px 8px;
+            font-size: 24px;
+            margin-left: 0;
+            display: inline-block;
+        }
+
+        sel-field {
+            width: 400px;
+            border: 0;
+            background-color: white;
+            display: block;
+            padding: 10px 20px;
+            border-radius: 8px;
+            margin: 16px;
+        }
+
+        sel-field > span {
+            font-size: 28px;
+            margin: 4px;
+            display: block;
+        }
+
+        sel-field select {
+            width: 384px;
+            outline: 0;
+            margin: 31.5px 11px;
+            font-size: 24px;
+            background-color: transparent;
+        }
+
+        button.submit {
+            background-color: transparent;
+            font-size: 18px;
+            border: 0;
+            outline: 0;
+            cursor: pointer;
+            position: absolute;
+            right: 36px;
+            bottom: -24px;
+        }
+
+        s-notify {
+            height: auto;
+            width: 400px;
+            top: 10px;
+            left: 0; right: 0;
+            margin: auto;
+            position: fixed;
+            display: -webkit-flex;
+            display: -moz-flex;
+            display: -ms-flex;
+            display: -o-flex;
+            display: flex;
+            flex-flow: column;
+            -ms-align-items: center;
+            align-items: center;
+            justify-content: flex-start;
+            z-index: 225;
+        }
+
+        s-notify > div {
+            margin: 5px 0;
+            padding: 8px 12px;
+            min-width: 300px;
+            border-radius: 2px;
+            border: 1px solid hsla(0, 0%, 100%, .2);
+            -webkit-box-shadow: 0 0 0 1px rgba(0, 0, 0, .1);
+            box-shadow: 0 0 0 1px rgba(0, 0, 0, .1);
+            opacity: 1;
+            color: rgb(252, 252, 252);
+            background-color: rgb(62, 63, 66);
+            letter-spacing: .5px;
+            position: relative;
+            display: -webkit-flex;
+            display: -moz-flex;
+            display: -ms-flex;
+            display: -o-flex;
+            display: flex;
+            -ms-align-items: center;
+            align-items: center;
+            -webkit-animation-name:slide-fader;
+            -webkit-animation-duration:2.5s;
+            -webkit-animation-iteration-count:1;
+            -webkit-animation-timing-function:ease-in-out;
+            animation-name:slide-fader;
+            animation-duration:2.5s;
+            animation-iteration-count:1;
+            animation-timing-function:ease-in-out;
+            font-weight: 500;
+        }
+
+        s-notify > div > button {
+            color: rgb(252, 252, 252);
+            border: 0;
+            outline: 0;
+            background-color: transparent;
+            margin-left: auto;
+            margin-right: -4px;
+            cursor: pointer;
+        }
+
+        @-webkit-keyframes slide-fader {
+            0% { opacity: 0; top: 0; }
+            10% { opacity: 1; top: 6px; }
+            90% { opacity: 1; top: 6px; }
+            to { opacity: 0; top: 0; }
+        }
+
+        @keyframes slide-fader {
+            0% { opacity: 0; top: 0; }
+            10% { opacity: 1; top: 6px; }
+            90% { opacity: 1; top: 6px; }
+            to { opacity: 0; top: 0; }
+        }
+
+        s-modal {
+            top: 0; bottom: 0;
+            left: 0; right: 0;
+            position: fixed;
+            background-color: rgba(0, 0, 0, 0.2);
+            display: none;
+            -ms-align-items: center;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            -webkit-transition-duration: 120ms;
+            -o-transition-duration: 120ms;
+            transition-duration: 120ms;
+        }
+
+        s-modal.active {
+            display: -webkit-flex;
+            display: -moz-flex;
+            display: -ms-flex;
+            display: -o-flex;
+            display: flex;
+            opacity: 1;
+        }
+
+        s-modal .modal {
+            height: 480px;
+            width: 380px;
+            display: block;
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 10px;
+            overflow: hidden;
+        }
+
+        s-modal .modal div {
+            height: 396px;
+            display: block;
+            overflow-x: scroll;
+            overflow-y: hidden;
+        }
+
+        .modal .title {
+            font-size: 30px;
+            padding: 12px 16px;
+            margin: 4px;
+            display: block;
+        }
+
+        .modal * {
+            white-space: nowrap;
+        }
+
+        .modal label {
+            margin: 15px 20px;
+            max-width: calc(100% - 40px);
+        }
+
+        .modal label input-disp {
+            display: inline-block;
+            width: 330px;
+        }
+        
+    </style>
+ 
+    <s-form>
+        <sf-part>
+            <input id="username" name="username" type="text" placeholder="帳號" />
+            <input id="password" name="password" type="password" placeholder="密碼" />
+            <radio-group id="sex">
+                <span>性別</span>
+                <label>
+                   <input name="sex" type="radio" value="男" />
+                    <span>男</span>
+                </label>
+                <label>
+                    <input name="sex" type="radio" value="女" />
+                    <span>女</span>
+                </label>
+                <label>
+                    <input name="sex" type="radio" value="其他" />
+                    <span>其他</span>
+                </label>
+            </radio-group>
+        </sf-part>
+        <sf-part>
+            <multi-select id="fav">
+                <span>喜歡的科目</span>
+                <label>
+                    <input name="fav" type="checkbox" value="國文" />
+                    <span>國文</span>
+                </label>
+                <label>
+                    <input name="fav" type="checkbox" value="英文" />
+                    <span>英文</span>
+                </label>
+                <label>
+                    <input name="fav" type="checkbox" value="數學" />
+                    <span>數學</span>
+                </label>
+                <label>
+                    <input name="fav" type="checkbox" value="電子學" />
+                    <span>電子學</span>
+                </label>
+                <label>
+                    <input name="fav" type="checkbox" value="數位邏輯" />
+                    <span>數位邏輯</span>
+                </label>
+                <label>
+                    <input name="fav" type="checkbox" value="程式設計" />
+                    <span>程式設計</span>
+                </label>
+            </multi-select>
+            <sel-field id="nfav">
+                <span>最討厭的科目</span>
+                <select id="nfavs" name="nfav">
+                    <option value="" selected disabled>請選擇</option>
+                    <option value="無">無</option>
+                    <option value="國文">國文</option>
+                    <option value="英文">英文</option>
+                    <option value="數學">數學</option>
+                    <option value="電子學">電子學</option>
+                    <option value="數位邏輯">數位邏輯</option>
+                    <option value="程式設計">程式設計</option>
+                </select>
+            </sel-field>
+        </sf-part>
+        <button class="submit" onclick="main()">提交</button>
+    </s-form>
+  
+    <s-notify></s-notify>
+    
+    <s-modal onclick="this.className=''">
+        <div class="modal">
+            <span class="title">您填寫的資訊</span><hr />
+            <div>
+                <label><span>帳號：</span><input-disp data-name="username"></input-disp></label>
+                <label><span>密碼：</span><input-disp data-name="password"></input-disp></label>
+                <label><span>性別：</span><input-disp data-name="sex"></input-disp></label>
+                <label><span>喜歡的科目：</span><input-disp data-name="fav"></input-disp></label>
+                <label><span>最討厭的科目：</span><input-disp data-name="nfav"></input-disp></label>
+            </div>
+        </div>
+    </s-modal>
+  
+    
+  
+    <script>
+        
+        const $ = i => Array.from(document.getElementsByName(i));
+        $.sel = i => document.querySelector(i);
+        const nameList = [ "帳號", "密碼", "性別", "喜歡的科目", "最討厭的科目" ];
+        const dataList = [ "username", "password", "sex", "fav", "nfav" ];
+        let prev = $.sel("select").value;
+
+        function main () {
+            (function c (i) {
+                let name = dataList[i], ins = $(name);
+                if (name) {
+                    if (!ins[1] && ins[0].value) {
+                        c(i + 1); return !1;
+                    } else {
+                        for (e of ins) if (e.checked) { c(i + 1); return !1; };
+                    } notify(`未正確填寫${nameList[dataList.indexOf(name)]}！`);
+                } else {
+                    dataList.forEach(i => {
+                        let el = $.sel(`[data-name='${i}']`), src= $(i);
+                        if (!src[1]) {
+                            el.innerHTML = src[0].value;
+                        } else if (i == "fav") {
+                            el.innerHTML = "";
+                            for (e of src) if (e.checked) { el.innerHTML += e.value + " "; };
+                        } else {
+                            for (e of src) if (e.checked) { el.innerHTML = e.value; };
+                        }
+                    });
+                    $.sel("s-modal").className = "active";
+                }
+            })(0);
+        }
+
+        function notify (message) {
+            let card = document.createElement("div");
+            card.style.animationDuration = "3000ms", card.innerHTML += message;
+            card.innerHTML += `<button onclick="this.parentElement.outerHTML=''">
+                <i class="fa fa-times"></i>
+            </button>`;
+            $.sel("s-notify").appendChild(card);
+            setTimeout(() => {
+                if ($.sel("s-notify").firstChild) {
+                    $.sel("s-notify").removeChild($.sel("s-notify").firstChild);
+                }
+            }, 3000);
+        }
+
+        function filter () {
+            let s_order = [ "國文", "英文", "數學", "電子學", "數位邏輯", "程式設計" ],
+                current = [], flag = !1, addItem = data =>
+                ($.sel("#nfavs").innerHTML += `<option value="${data}">${data}</option>`);
+            $.sel("select").value && (prev = $.sel("select").value);
+            $.sel("#nfavs").innerHTML = `<option value="" selected disabled>請選擇</option>`;
+            addItem("無");
+            s_order.forEach(each => {
+                if (!$.sel(`input[name=fav][value='${each}']`).checked) {
+                    current.push(each);
+                    addItem(each);
+                    (each == prev) && (flag = !0);
+                }
+            });
+            prev == "無" && (flag = !0);
+            flag && ($.sel("#nfavs").value = prev);
+        }
+
+        $("fav").forEach(i => i.addEventListener("click", filter));
+        $.sel(".modal").addEventListener("click", e => e.stopPropagation());
+        setTimeout(console.clear);
+        
+    </script>
+    
+</body>
+</html>

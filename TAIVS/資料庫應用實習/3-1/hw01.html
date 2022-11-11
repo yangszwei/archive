@@ -1,0 +1,158 @@
+<!doctype html>
+<html>
+<head>
+    <title>訊二甲 30 楊斯惟 3-1</title>
+    <meta charset="utf-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC&display=swap" rel="stylesheet">
+</head>
+<body>
+   
+    <style>
+        * {
+            font-family: 'Noto Sans TC', sans-serif;
+        }
+        
+        #main {
+            vertical-align: middle;
+        }
+        
+        #main a {
+            height: 120px;
+            width: 200px;
+            display: inline-block;
+            text-align: center;
+            line-height: 120px;
+            text-decoration: none;
+            font-size: 22px;
+            color: #2F2F2F;
+            background-color: #DFDFDF;
+            border-radius: 8px;
+            margin: 10px;
+            transition-duration: 0.14s;
+            vertical-align: middle;
+        }
+        
+        #main a:hover {
+            font-size: 24px;
+            background-color: #CFCFCF;
+        }
+        
+        #main a:active {
+            background-color: #BABABA;
+        }
+        
+        #modal:not(.active) {
+            display: none;
+        }
+        
+        #modal {
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            position: fixed;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+        
+        #modal .wrapper {
+            height: 80vh;
+            width: 60vw;
+            overflow: hidden;
+            background-color: #FFFFFF;
+        }
+        
+        #modal .top {
+            height: calc(85% - 40px);
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        #modal .top img {
+            max-height: 100%;
+            min-height: 90%;
+            max-width: 100%;
+        }
+        
+        #modal .ctrl {
+            height: calc(15% - 1px);
+            padding: 0 60px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        #modal .ctrl a {
+            font-size: 32px;
+            display: block;
+            padding-bottom: 10px;
+            cursor: default;
+        }
+        
+        #modal .ctrl button {
+            color: #0000FF;
+            background-color: transparent;
+            font-size: 18px;
+            border: 0;
+            outline: 0;
+            padding: 8px 16px;
+            border-radius: 6px;
+            transition-duration: 0.15s;
+            cursor: pointer;
+        }
+        
+        #modal .ctrl button:hover {
+            background-color: #DFDFDF;
+        }
+        
+        #modal .ctrl button:active {
+            background-color: #BABABA;
+        }
+        
+    </style>
+    
+    <div id="main">
+        <a href="1.jpg">珍珠奶茶</a>
+        <a href="2.jpg">蛋包飯</a>
+        <a href="3.jpg">牛排</a>
+        <a href="4.jpg">牛肉麵</a>
+        <a href="5.jpg">鮮蝦餛飩麵</a>
+        <a href="6.jpg">炒飯</a>
+    </div>
+    
+    <div id="modal">
+        <div class="wrapper">
+            <div class="top">
+            </div>
+            <div class="ctrl">
+                <a>範例標題</a>
+                <button onclick="$('#modal').classList.remove('active');">返回菜單</button>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+    
+        const $ = i => document.querySelector(i);
+        
+        Array.from($("#main").children).forEach(i => {
+            i.addEventListener("click", function (e) {
+                e.preventDefault();
+                let source = e.target.getAttribute("href");
+                $("#modal .top").innerHTML = `<img src="${source}" />`;
+                $("#modal .ctrl a").innerHTML = e.target.innerHTML;
+                $("#modal").classList.add("active");
+            });
+        });
+    
+    </script>
+    
+</body>
+</html>
