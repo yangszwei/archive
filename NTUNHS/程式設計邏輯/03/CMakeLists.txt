@@ -4,5 +4,3 @@ project(03 C)
 set(CMAKE_C_STANDARD 99)
 
 add_executable(02 02.c)
-add_executable(03 03.c)
-add_executable(04 04.c)

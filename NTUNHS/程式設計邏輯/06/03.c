@@ -5,6 +5,7 @@
 
 int main() {
     int N;
+
     for (int i = 0; i < 6; ++i) {
         if (i > 3) sleep(5);
 
@@ -20,6 +21,7 @@ int main() {
             puts("密碼錯誤");
         }
     }
+
     puts("錯誤次數過多");
     return 1;
 }
