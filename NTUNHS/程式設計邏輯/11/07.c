@@ -39,14 +39,10 @@ int main() {
             printf("結果為%d點\n", pt[0] + pt[3]);
         }
     } else if (pt[0] == pt[1]) {
-        if (pt[2] == 5 && pt[3] == 6) {
-            printf("結果為11點");
-        } else {
-            printf("結果為%d點\n", pt[2] + pt[3]);
-        }
+        printf("結果為%d點\n", pt[2] + pt[3]);
     } else if (pt[2] == pt[3]) {
-        if (pt[0] == 1 && pt[1] == 2) {
-            printf("結果為BG(%d點)\n", pt[0] + pt[1]);
+        if (pt[0] + pt[1] == 3) {
+            puts("結果為BG(3點)");
         } else {
             printf("結果為%d點\n", pt[0] + pt[1]);
         }
