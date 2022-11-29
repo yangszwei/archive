@@ -1,4 +1,4 @@
-# [隨堂練習1]if...else & while Loop運用
+# [隨堂練習1] if...else & while Loop運用
 
 ## 說明
 
