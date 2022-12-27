@@ -7,10 +7,10 @@
 char *generate_password() {
     char *password = malloc(9 * sizeof(char));
     password[0] = '2';
-    for (int i = 1; i < 8; i += 3) {
+    for (int i = 1; i <= 7; i += 3) {
         password[i] = rand() % 26 + 'a';
     }
-    for (int i = 2; i < 6; i += 3) {
+    for (int i = 2; i <= 5; i += 3) {
         password[i] = rand() % 26 + 'A';
         password[i + 1] = rand() % 10 + '0';
     }
@@ -19,76 +19,82 @@ char *generate_password() {
 }
 
 int main() {
-    const int n = 100;
-    char username[7], password[10];
-    char user[6], pass[9];
-    char name[16], line[1024], *pos;
-    int isFound = 0;
-    FILE *users, *welcome, *out;
+    FILE *users, *template, *out;
+    char username[6], password[9];
+    char userIn[100], passIn[100];
+    char filename[16], line[1024], *pos;
+    int ok = 0;
 
     srand(time(NULL));
 
-    // 1-1
+    /**
+     * 1-1 產生 100 組帳號密碼並寫入 users.dat
+     */
     if (!(users = fopen("users.dat", "w"))) {
-        puts("無法開啟檔案 \"users.dat\"!");
+        fputs("錯誤：無法開啟檔案 \"users.dat\"\n", stderr);
         return 1;
     }
 
-    for (int i = 0; i < n; ++i) {
+    for (int i = 0; i < 100; ++i) {
         fprintf(users, "HN%03d %s\n", i + 1, generate_password());
     }
 
     fclose(users);
 
-    // 1-2
+    /**
+     * 1-2 判斷帳號密碼是否正確
+     */
     if (!(users = fopen("users.dat", "r"))) {
-        puts("Error opening file \"users.dat\"!");
-        return 0;
+        fputs("錯誤：無法開啟檔案 \"users.dat\"\n", stderr);
+        return 1;
     }
 
     fputs("請輸入帳號：", stdout);
-    scanf("%s", user);
+    scanf("%s", userIn);
 
     fputs("請輸入密碼：", stdout);
-    scanf("%s", pass);
+    scanf("%s", passIn);
 
     while (fscanf(users, "%s %s", username, password) != EOF) {
-        if (strcmp(username, user) == 0 && strcmp(password, pass) == 0) {
-            isFound = 1;
-            break;
-        }
+        if ((ok |= !strcmp(userIn, username) && !strcmp(passIn, password))) break;
     }
 
-    puts(isFound ? "登入成功！" : "登入失敗！");
+    puts(ok ? "登入成功" : "登入失敗");
 
-    // 1-3
-    rewind(users);
-
-    if (!(welcome = fopen("welcome.dat", "r"))) {
-        puts("無法開啟檔案 \"welcome.txt\"!");
+    /**
+     * 1-3 從 welcome.dat 產生 {username}.txt
+     */
+    if (!(template = fopen("welcome.dat", "r"))) {
+        fputs("錯誤：無法開啟檔案 \"welcome.dat\"\n", stderr);
+        fclose(users);
         return 1;
     }
 
     mkdir("users", 0777);
 
+    ok = 1;
+    rewind(users);
+
     while (fscanf(users, "%s %s", username, password) != EOF) {
-        sprintf(name, "users/%s.txt", username);
-        if (!(out = fopen(name, "w"))) {
-            printf("無法開啟檔案 \"%s\"!", name);
-            return 1;
+        sprintf(filename, "users/%s.txt", username);
+        if (!(ok = (out = fopen(filename, "w")) != NULL)) {
+            fprintf(stderr, "錯誤：無法開啟檔案 \"%s\"\n", filename);
+            break;
         }
-        while (fgets(line, 1024, welcome) != NULL) {
-            if ((pos = strstr(line, "<ID>")) != NULL) {
+        while (fgets(line, 1024, template) != NULL) {
+            if ((pos = strstr(line, "<ID>"))) {
                 sprintf(pos, "%s\n", username);
-            } else if ((pos = strstr(line, "<PASSWORD>")) != NULL) {
+            } else if ((pos = strstr(line, "<PASSWORD>"))) {
                 sprintf(pos, "%s\n", password);
             }
             fputs(line, out);
         }
-        rewind(welcome);
+        fclose(out);
+        rewind(template);
     }
 
-    fclose(welcome);
+    fclose(users);
+    fclose(template);
 
-    return 0;
+    return !ok;
 }
