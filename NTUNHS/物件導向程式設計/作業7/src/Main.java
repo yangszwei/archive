@@ -235,7 +235,6 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-
         Game game = new TextBasedGame(scanner, GameMode.PvC, false);// PvP|PvC|Auto, true: 自動產生怪獸
         // game.setSleepTime(3000);
         game.start();
