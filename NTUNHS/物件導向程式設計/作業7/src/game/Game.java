@@ -133,10 +133,11 @@ public abstract class Game {
         while (actor.isAlive() && opponent.isAlive()) {
             Monster self = actor.chooseMonster();
             Monster enemy = opponent.chooseMonster();
+            GameRound round = new GameRound(self, enemy);
             beforeRound(self, enemy);
-            Monster.Action action = chooseAction(actor, self);
+            Monster.Action action = chooseAction(actor, round);
             if (action == null) continue;
-            Monster.Action enemyAction = chooseAction(opponent, enemy);
+            Monster.Action enemyAction = chooseAction(opponent, round.enemyRound());
             if (enemyAction == null) continue;
             ActionContext ctx = new ActionContext(self, enemy, action, enemyAction);
             ActionResult result = runAction(ctx), enemyResult = null;
@@ -157,7 +158,7 @@ public abstract class Game {
     /**
      * 選擇怪獸行動。
      */
-    protected Monster.Action chooseAction(Actor actor, Monster monster) {
+    protected Monster.Action chooseAction(Actor actor, GameRound round) {
         return Monster.Action.values()[(int) (Math.random() * 3)];
     }
 

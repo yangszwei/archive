@@ -119,7 +119,7 @@ public abstract class Monster {
      */
     public static Monster deserialize(String data) {
         String[] parts = data.split(",");
-        return MonsterBuilder.build(
+        return MonsterBuilder.recover(
                 parts[0], parts[1],
                 Monster.Type.valueOf(parts[2]), Integer.parseInt(parts[3]),
                 Integer.parseInt(parts[4]), Integer.parseInt(parts[5]),

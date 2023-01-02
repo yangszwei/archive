@@ -1,6 +1,8 @@
 import actor.Actor;
 import console.Format;
 import game.Game;
+import game.GameRound;
+import intelligence.ActionDecider;
 import monster.Monster;
 import monster.MonsterBuilder;
 
@@ -133,8 +135,13 @@ class TextBasedGame extends Game {
     }
 
     @Override
-    protected Monster.Action chooseAction(Actor actor, Monster monster) {
-        if (actor.isPc) return super.chooseAction(actor, monster);
+    protected Monster.Action chooseAction(Actor actor, GameRound round) {
+        Monster monster = round.self();
+        if (actor.isPc) {
+            Monster.Action action = ActionDecider.chooseAction(round);
+            System.out.println(actor.name + " 的回合，選擇 " + monster.name + " 進行" + action.displayName());
+            return action;
+        }
         System.out.printf("%s 的回合，請選擇 %s 的行動（1. 攻擊 2. 防守 3. 補血 4. 離開 5. 存檔 6. 讀檔）：", actor.name, monster.name);
         return switch (scanner.nextLine()) {
             case "1" -> Monster.Action.ATTACK;
@@ -156,7 +163,7 @@ class TextBasedGame extends Game {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-                yield chooseAction(actor, monster);
+                yield chooseAction(actor, round);
             }
             case "6" -> {
                 System.out.println("--------------------");
@@ -178,7 +185,7 @@ class TextBasedGame extends Game {
             }
             default -> {
                 Format.printError("輸入錯誤，請重新輸入！");
-                yield chooseAction(actor, monster);
+                yield chooseAction(actor, round);
             }
         };
     }

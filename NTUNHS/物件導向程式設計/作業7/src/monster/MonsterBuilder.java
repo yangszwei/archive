@@ -11,7 +11,7 @@ public class MonsterBuilder {
     }
 
     /**
-     * 使用參數建立一個對應屬性及進化等級的 Monster 實體。
+     * 使用參數建立一個對應屬性的 Monster 實體，並進化至對應等級。
      */
     public static Monster build(String id, String name, Monster.Type type, int level, int attack, int defense, int maxHp, int hp) {
         Monster monster = switch (type) {
@@ -26,6 +26,25 @@ public class MonsterBuilder {
     }
 
     /**
+     * 使用參數建立一個對應屬性及進化等級的 Monster 實體。
+     */
+    public static Monster recover(String id, String name, Monster.Type type, int level, int attack, int defense, int maxHp, int hp) {
+        return switch (level) {
+            case 1 -> switch (type) {
+                case FIRE -> new FireMonster(id, name, attack, defense, maxHp, hp);
+                case WATER -> new WaterMonster(id, name, attack, defense, maxHp, hp);
+                case ELECTRIC -> new ElectricMonster(id, name, attack, defense, maxHp, hp);
+            };
+            case 2 -> switch (type) {
+                case FIRE -> new FireMonster2(id, name, attack, defense, maxHp, hp);
+                case WATER -> new WaterMonster2(id, name, attack, defense, maxHp, hp);
+                case ELECTRIC -> new ElectricMonster2(id, name, attack, defense, maxHp, hp);
+            };
+            default -> null;
+        };
+    }
+
+    /**
      * 建立一個完全隨機的怪獸。
      */
     public static Monster random() {
@@ -36,13 +55,13 @@ public class MonsterBuilder {
      * 將未提供的參數填入隨機值，並建立一個對應的怪獸。
      */
     public static Monster random(String name, Monster.Type type, int level, int attack, int defense, int maxHp) {
-        int base = (int) (Math.random() * 30) + 30;
+        int base = (int) (Math.random() * 25) + 25;
         name = name == null ? randomName() : name;
         type = type == null ? Monster.Type.values()[(int) (Math.random() * Monster.Type.values().length)] : type;
         level = level <= 0 ? (int) (Math.random() * 2) + 1 : level;
-        attack = attack <= 0 ? (int) (Math.random() * 30) + base : attack;
-        defense = defense <= 0 ? (int) (Math.random() * 30) + base : defense;
-        maxHp = maxHp <= 0 ? (int) (Math.random() * 60) + (base * 2) : maxHp;
+        attack = attack <= 0 ? (int) (Math.random() * 25) + base : attack;
+        defense = defense <= 0 ? (int) (Math.random() * 25) + base : defense;
+        maxHp = maxHp <= 0 ? (int) (Math.random() * 50) + (base * 4) : maxHp;
         return build(name, type, level, attack, defense, maxHp, maxHp);
     }
 
