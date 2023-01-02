@@ -14,8 +14,6 @@ public class FireMonster extends BaseMonster {
 
     /**
      * 將此 FireMonster 怪獸進化為 FireMonster2。
-     *
-     * @return FireMonster2 實體
      */
     @Override
     public Monster evolve() {

@@ -12,13 +12,6 @@ public class Format {
     }
 
     /**
-     * 以「輸入」樣式印出一行文字至 System.out。
-     */
-    public static void printInput(Object x) {
-        System.out.println(Color.DARK_GREEN + x + Color.RESET);
-    }
-
-    /**
      * 以「狀態」樣式印出一行文字至 System.out。
      */
     public static void printStatus(Object x) {

@@ -14,8 +14,6 @@ public class WaterMonster extends BaseMonster {
 
     /**
      * 將此 WaterMonster 怪獸進化為 WaterMonster2。
-     *
-     * @return WaterMonster2 實體
      */
     @Override
     public Monster evolve() {

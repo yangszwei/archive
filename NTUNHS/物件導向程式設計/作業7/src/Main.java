@@ -85,7 +85,8 @@ class MonsterReader {
  */
 enum GameMode {
     PvP(new Actor(1, "玩家1"), new Actor(2, "玩家2")),
-    PvC(new Actor(1, "玩家"), new Actor(2, "電腦", true));
+    PvC(new Actor(1, "玩家"), new Actor(2, "電腦", true)),
+    Auto(new Actor(1, "電腦1", true), new Actor(2, "電腦2", true));
 
     final Actor actor;
     final Actor opponent;
@@ -139,7 +140,9 @@ class TextBasedGame extends Game {
         Monster monster = round.self();
         if (actor.isPc) {
             Monster.Action action = ActionDecider.chooseAction(round);
-            System.out.println(actor.name + " 的回合，選擇 " + monster.name + " 進行" + action.displayName());
+            System.out.print(actor.name + " 的回合，選擇 " + monster.name + " 進行");
+            sleep(sleepTime);
+            System.out.println(action.displayName());
             return action;
         }
         System.out.printf("%s 的回合，請選擇 %s 的行動（1. 攻擊 2. 防守 3. 補血 4. 離開 5. 存檔 6. 讀檔）：", actor.name, monster.name);
@@ -232,7 +235,9 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        Game game = new TextBasedGame(scanner, GameMode.PvC, !false); // true: 自動產生怪獸
+
+        Game game = new TextBasedGame(scanner, GameMode.PvC, false);// PvP|PvC|Auto, true: 自動產生怪獸
+        // game.setSleepTime(3000);
         game.start();
 
         scanner.close();

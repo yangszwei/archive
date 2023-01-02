@@ -63,6 +63,7 @@ public abstract class Game {
 
     protected final Actor actor;
     protected final Actor opponent;
+    protected int sleepTime = 0;
     private final List<ActionResult> actions = new ArrayList<>();
 
     protected Game(Actor actor, Actor opponent) {
@@ -74,6 +75,13 @@ public abstract class Game {
         this.actor = actor;
         this.opponent = opponent;
         this.actions.addAll(actions);
+    }
+
+    /**
+     * 設定電腦選擇行動使用的時間。
+     */
+    public void setSleepTime(int sleepTime) {
+        this.sleepTime = sleepTime;
     }
 
     /**
@@ -158,9 +166,7 @@ public abstract class Game {
     /**
      * 選擇怪獸行動。
      */
-    protected Monster.Action chooseAction(Actor actor, GameRound round) {
-        return Monster.Action.values()[(int) (Math.random() * 3)];
-    }
+    protected abstract Monster.Action chooseAction(Actor actor, GameRound round);
 
     /**
      * 結束一回合後的處理（顯示該回合的結果）
@@ -177,6 +183,17 @@ public abstract class Game {
         opponent.monsters.addAll(game.opponent.monsters);
         actions.clear();
         actions.addAll(game.actions);
+    }
+
+    /**
+     * 一段時間，讓玩家可以看到雙方行動。
+     */
+    protected static void sleep(int ms) {
+        try {
+            Thread.sleep(ms);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     /**

@@ -14,8 +14,6 @@ public class ElectricMonster extends BaseMonster {
 
     /**
      * 將此 ElectricMonster 怪獸進化為 ElectricMonster2。
-     *
-     * @return ElectricMonster2 實體
      */
     @Override
     public Monster evolve() {

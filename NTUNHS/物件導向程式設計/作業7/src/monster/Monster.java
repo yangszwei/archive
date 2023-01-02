@@ -66,15 +66,11 @@ public abstract class Monster {
 
     /**
      * 建立進化後的怪獸。
-     *
-     * @return 進化後的怪獸
      */
     public abstract Monster evolve();
 
     /**
      * 檢查怪獸是否還活著。
-     *
-     * @return true: 活著, false: 死亡
      */
     public boolean isAlive() {
         return hp > 0;
@@ -103,9 +99,7 @@ public abstract class Monster {
     public abstract int heal();
 
     /**
-     * 將怪獸資訊轉換成字串。
-     *
-     * @return 怪獸資訊字串
+     * 將怪獸資訊序列化為字串。
      */
     public String serialize() {
         return String.format(
@@ -115,7 +109,7 @@ public abstract class Monster {
     }
 
     /**
-     * 從「怪獸資訊字串」還原出 Monster 實體。
+     * 從字串反序列化出怪獸資訊。
      */
     public static Monster deserialize(String data) {
         String[] parts = data.split(",");
@@ -129,8 +123,6 @@ public abstract class Monster {
 
     /**
      * 取得怪獸狀態的文字敘述。
-     *
-     * @return 怪獸狀態的文字敘述
      */
     @Override
     public String toString() {
