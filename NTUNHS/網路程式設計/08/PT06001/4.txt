@@ -1,0 +1,7 @@
+﻿在2000年5月22日，以Zend Engine 1.0為基礎的PHP 4正式釋出，2004年7月13日則釋出了PHP 5，PHP 5則使用了第二代的Zend Engine。
+PHP包含了許多新特色，像是強化的物件導向功能、引入PDO（PHP Data Objects，一個存取資料庫的延伸函式庫）、以及許多效能上的增強。
+目前PHP 4已經不會繼續更新，以鼓勵用戶轉移到PHP 5。
+
+2008年PHP 5成為了PHP唯一維護中的穩定版本。將來的PHP 5.3將會加入Late static binding和一些其他的功能強化。
+
+PHP 6的開發也正在進行中，主要的改進有移除register_globals、magic quotes和Safe mode的功能。

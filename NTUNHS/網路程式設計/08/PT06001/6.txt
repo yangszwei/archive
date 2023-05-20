@@ -1,0 +1,11 @@
+﻿5.0 5.0.0 2004年7月13日 Zend Engine II with a new object model.[19] 
+5.1.0 2005年11月24日 Performance improvements with introduction of compiler variables in re-engineered PHP Engine.[19] 
+5.2.0 2006年11月2日 預設開啟"過濾"的擴充功能。[19] 
+5.2.8 2008年12月8日[20] emergent bug fix[20] 
+5.2.9 2009年2月26日[21] 解決了5.2.*的超過了50多個錯誤和多個安全問題，增加了穩定性。[21] 
+5.2.10 2009年6月18日[22] 這個版本修正了大量的bug和安全漏洞，並升級了時區資料庫。[22] 
+5.2.17 2011年1月6日[23] 修正了一個浮點數轉化的Bug[23] 
+5.3.0 2009年6月30日[24] 支援名稱空間;使用XMLReader和XMLWriter增強XML支援;支援SOAP ,[25]延遲靜態繫結，跳轉標籤（有限的goto）, 閉包，Native PHP archives 
+5.3.3 2010年7月22日[26] 使用名稱空間的類中，與類同名的成員函式不再作為建構函式 [27] 
+5.3.6 2011年3月17日[28] 修正一系列Bug [29] 
+6.0 6.0.0 ??? 支援Unicode;移除ereg擴充功能, 'register_globals', 'magic_quotes'和'safe_mode'; Alternative PHP Cache；Removal of mime_magic and rewrite of fileinfo() for better MIME support[30] 

@@ -1,0 +1,4 @@
+﻿在1997年，任職於Technion IIT公司的兩個以色列程式設計師：
+	Zeev Suraski和Andi Gutmans，重寫了PHP的剖析器，成為PHP 3的基礎，而PHP也在這個時候改稱為PHP: Hypertext Preprocessor。
+經過幾個月測試，開發團隊在1997年11月釋出了PHP/FI 2，隨後就開始PHP 3的開放測試，最後在1998年6月正式釋出PHP 3。
+Zeev Suraski和Andi Gutmans在PHP 3釋出後開始改寫PHP的核心，這個在1999年釋出的剖析器稱為Zend Engine，他們也在以色列的Ramat Gan成立了Zend Technologies來管理PHP的開發。
