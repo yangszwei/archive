@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+    <head>
+        <meta charset="UTF-8">
+        <title>作業 1</title>
+        <link rel="stylesheet" href="index.css">
+        <script async defer src="index.js"></script>
+    </head>
+    <body>
+        <nav>
+            <h1 class="title">作業 1</h1>
+            <ul>
+                <li>
+                    <a id="link-bmi" class="link" href="#bmi">BMI 計算</a>
+                </li>
+                <li>
+                    <a id="link-mt" class="link" href="#mt">九九乘法表</a>
+                </li>
+                <li>
+                    <a id="link-image" class="link" href="#image">隨機圖片</a>
+                </li>
+            </ul>
+            <small style="margin-top: auto;text-align: center">
+                102214209 <a href="https://yangszwei.com/" target="_blank">楊斯惟</a>
+            </small>
+        </nav>
+        <section id="image" class="hidden" style="margin: 1rem;">
+            <img id="photo" src="https://picsum.photos/750/500" alt="隨機圖片" height="500" width="750">
+            <p style="margin-bottom: 2rem; font-size: 0.75rem">
+                圖片來源：<a href="https://picsum.photos/" target="_blank">Lorem Picsum</a>
+            </p>
+            <button id="next-picture" type="button" class="button">下一張圖片</button>
+        </section>
+        <section id="bmi" class="hidden" style="margin: 1rem;">
+            <div class="card" style="padding: 1rem">
+                <h1 style="text-align: center">BMI 計算</h1>
+                <form style="padding: 1rem">
+                    <label style="font-size: 1.25rem">
+                        <span>身高</span>
+                        <input id="height" name="height" type="number">
+                        <sub>公分</sub>
+                    </label>
+                    <label style="font-size: 1.25rem">
+                        <span>體重</span>
+                        <input id="weight" name="weight" type="number">
+                        <sub>公斤</sub>
+                    </label>
+                    <label style="font-size: 1.25rem">
+                        <span>BMI = </span>
+                        <input id="bmi-result" type="number" disabled>
+                    </label>
+                    <p id="bmi-cat" style="height: 1rem"></p>
+                    <button id="bmi-submit" type="button" class="button">計算</button>
+                </form>
+            </div>
+        </section>
+        <section id="mt" class="hidden" style="margin: 1rem;">
+            <div class="card" style="padding: 1rem">
+                <h1 style="text-align: center">九九乘法表</h1>
+                <table>
+                    <tbody id="mt-body"></tbody>
+                </table>
+            </div>
+        </section>
+    </body>
+</html>
